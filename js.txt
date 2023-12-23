@@ -1,0 +1,30 @@
+let score = 0;
+
+function updateScore() {
+  const scoreElement = document.getElementById('score');
+  scoreElement.textContent = النقاط: ${score};
+}
+
+function getRandomPosition() {
+  const width = window.innerWidth - 100;
+  const height = window.innerHeight - 100;
+  const x = Math.random() * width;
+  const y = Math.random() * height;
+  return { x, y };
+}
+
+function createCircle() {
+  const circle = document.getElementById('circle');
+  const position = getRandomPosition();
+  circle.style.left = ${position.x}px;
+  circle.style.top = ${position.y}px;
+}
+
+document.getElementById('circle').addEventListener('click', function() {
+  score++;
+  updateScore();
+  createCircle();
+});
+
+createCircle();
+updateScore();
